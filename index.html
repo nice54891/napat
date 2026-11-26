@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>BMR TDEE</title>
+</head>
+<body>
+
+<h2>คำนวณ BMR และ TDEE</h2>
+
+เพศ
+<select id="g">
+<option value="1">ชาย</option>
+<option value="2">หญิง</option>
+</select><br>
+
+น้ำหนัก <input id="w" type="number"><br>
+ส่วนสูง <input id="h" type="number"><br>
+อายุ <input id="a" type="number"><br>
+
+กิจกรรม
+<select id="act">
+<option value="1.2">1.2</option>
+<option value="1.55">1.55</option>
+</select><br>
+
+<button onclick="cal()">คำนวณ</button>
+
+<p id="result"></p>
+
+<script>
+function cal(){
+let w=Number(document.getElementById("w").value);
+let h=Number(document.getElementById("h").value);
+let a=Number(document.getElementById("a").value);
+let g=document.getElementById("g").value;
+let act=Number(document.getElementById("act").value);
+
+let bmr=(10*w)+(6.25*h)-(5*a)+(g=="1"?5:-161);
+let tdee=bmr*act;
+
+document.getElementById("result").innerHTML=
+"BMR = "+bmr.toFixed(2)+" kcal/วัน<br>"+
+"TDEE = "+tdee.toFixed(2)+" kcal/วัน";
+}
+</script>
+
+</body>
+</html>
